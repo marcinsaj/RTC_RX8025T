@@ -40,6 +40,7 @@ The following example sketches are included with the **RTC-RX8025T** library:
 - [InterruptOutputRTC](https://github.com/marcinsaj/RTC-RX8025T/blob/main/examples/InterruptOutputRTC/InterruptOutputRTC.ino) - Generate an interrupt by the RTC (INT output) every second or every minute and handle the interrupt.
 - [FrequencyOutputRTC](https://github.com/marcinsaj/RTC-RX8025T/blob/main/examples/FrequencyOutputRTC/FrequencyOutputRTC.ino) - Generate square wave by the RTC (FOUT output) with preset frequencies: 32.768 kHz, 1024 Hz, 1Hz.
 - [InterruptFrequencyOutputRTC](https://github.com/marcinsaj/RTC-RX8025T/blob/main/examples/InterruptFrequencyOutputRTC/InterruptFrequencyOutputRTC.ino) - Generate an interrupt and square wave by the RTC.  
+
 To do:
 - Alarm - not yet implemented in the library
 - Timer - not yet implemented in the library
