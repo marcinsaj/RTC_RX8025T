@@ -1,4 +1,4 @@
-# Arduino RTC-RX8025T Library v1.0.0
+# Arduino RTC_RX8025T Library v1.0.0
 
 https://github.com/marcinsaj/RTC-RX8025T  
 The MIT License  
