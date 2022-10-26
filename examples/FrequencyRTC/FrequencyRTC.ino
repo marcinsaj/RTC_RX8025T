@@ -43,7 +43,7 @@ void setup(void)
   //The Time library is a software RTC. 
   //"system time" it is referring to the current time according to the software RTC.
   //Set the system time to 10h 23m 30s on 25 Oct 2022
-  setTime(9, 23, 30, 25, 10, 22);
+  setTime(10, 23, 30, 25, 10, 22);
   //Set the RTC from the system time
   RTC.set(now());
 
