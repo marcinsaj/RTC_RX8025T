@@ -11,7 +11,7 @@
  * https://github.com/marcinsaj/RTC-RX8025T                             *
  *----------------------------------------------------------------------*/
 
-#include <RTC_RX8025T.h>      //https://github.com/marcinsaj/RTC-RX8025T
+#include <RTC-RX8025T.h>      //https://github.com/marcinsaj/RTC-RX8025T
 #include <TimeLib.h>          //https://github.com/PaulStoffregen/Time
 #include <Wire.h>             //https://arduino.cc/en/Reference/Wire (included with Arduino IDE)
 
