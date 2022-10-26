@@ -10,7 +10,7 @@
  * https://github.com/marcinsaj/RTC-RX8025T                           	*
  *----------------------------------------------------------------------*/ 
 
-#include <RTC_RX8025T.h>
+#include <RTC-RX8025T.h>
 
 //define release-independent I2C functions
 #if defined(__AVR_ATtiny44__) || defined(__AVR_ATtiny84__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__)
