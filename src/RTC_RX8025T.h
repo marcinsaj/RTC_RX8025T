@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------*
- * RTC_RX8025T.h - Arduino library for the Seiko Epson RX8025T       	*
+ * RTC-RX8025T.h - Arduino library for the Seiko Epson RX8025T       	*
  * Real Time Clock. This library is intended for use with the Arduino   *
  * TimeLib.h library, http://www.arduino.cc/playground/Code/Time        *
  *                                                                      *
@@ -10,8 +10,8 @@
  * https://github.com/marcinsaj/RTC-RX8025T                           	*
  *----------------------------------------------------------------------*/ 
 
-#ifndef RTC_RX8025T_h
-#define RTC_RX8025T_h
+#ifndef RTC-RX8025T_h
+#define RTC-RX8025T_h
 
 #include <TimeLib.h>
 
