@@ -13,13 +13,13 @@ The **RTC-RX8025T** library is based on the Paul Stoffregen [library DS3232RTC](
 ## Timekeeping accuracy ##
 The accuracy depends on the version of the clock used and the operating temperature, more in the [summary](https://github.com/marcinsaj/RTC-RX8025T/blob/main/datasheet/RX8025T-Datasheet-summary.pdf).
 
-  • RTC-RX8025T-UA
-    - ± 1.9 x 10-6 / 0 ºC to +40 ºC ( Equivalent to 5 seconds of month deviation )
-    - ± 3.4 x 10-6 / -40 ºC to +85 ºC ( Equivalent to 9 seconds of month deviation )
+- RTC-RX8025T-UA
+  - ± 1.9 x 10-6 / 0 ºC to +40 ºC (Equivalent to 5 seconds of month deviation)
+  - ± 3.4 x 10-6 / -40 ºC to +85 ºC (Equivalent to 9 seconds of month deviation)
 
-  • RTC-RX8025T-UB
-    - ± 3.8 x 10-6 / 0 ºC to +50 ºC ( Equivalent to 10 seconds of month deviation )
-    - ± 5.0 x 10-6 / -40 ºC to +85 ºC ( Equivalent to 13 seconds of month deviation ) 
+- RTC-RX8025T-UB
+  - ± 3.8 x 10-6 / 0 ºC to +50 ºC (Equivalent to 10 seconds of month deviation)
+  - ± 5.0 x 10-6 / -40 ºC to +85 ºC (Equivalent to 13 seconds of month deviation) 
 
 ## Library Installation ##
 To use the **RTC-RX8025T** library:  
