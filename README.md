@@ -4,22 +4,15 @@ The MIT License
 Marcin Saj 25 OCT 2022
 
 
-
 ## Introduction ##
 **RTC-RX8025T** is an Arduino library that supports the Seiko Epson RX8025T Real Time Clock. This library is intended to be used with the [Arduino Time library](http://www.arduino.cc/playground/Code/Time). RTC-RX8025T implements functions to support the Date and Time functions, interrupt output, frequency output, alarm and timer functions.
 
 The **RTC-RX8025T** library is based on the Paul Stoffregen [library DS3232RTC](https://github.com/PaulStoffregen/DS3232RTC).
 
-## Timekeeping accuracy ##
-The accuracy depends on the version of the clock used and the operating temperature, more in the [summary](https://github.com/marcinsaj/RTC-RX8025T/blob/main/datasheet/RX8025T-Datasheet-summary.pdf).
-
-- RTC-RX8025T-UA
-  - ± 1.9 x 10-6 / 0 ºC to +40 ºC (Equivalent to 5 seconds of month deviation)
-  - ± 3.4 x 10-6 / -40 ºC to +85 ºC (Equivalent to 9 seconds of month deviation)
-
-- RTC-RX8025T-UB
-  - ± 3.8 x 10-6 / 0 ºC to +50 ºC (Equivalent to 10 seconds of month deviation)
-  - ± 5.0 x 10-6 / -40 ºC to +85 ºC (Equivalent to 13 seconds of month deviation) 
+## RTC RX8025T Module
+- [Project website - Datasheet](https://nixietester.com/project/real-time-clock-rx8025t)
+- [Availability - How to get](https://nixietester.com/product/real-time-clock-rx8025t)
+- [Arduino Library - How to use](https://github.com/marcinsaj/RTC-RX8025T)
 
 ## Library Installation ##
 To use the **RTC-RX8025T** library:  
@@ -27,6 +20,17 @@ To use the **RTC-RX8025T** library:
 - Uncompress the downloaded file.  This will result in a folder containing all the files for the library, that has a name that includes the branch name, usually **RTC-RX8025T-master**.
 - Rename the folder to just **RTC-RX8025T**.
 - Copy the renamed folder to the Arduino sketchbook\libraries folder.
+
+## Timekeeping accuracy ##
+The accuracy depends on the version of the clock used and the operating temperature, more in the [summary](https://github.com/marcinsaj/RTC-RX8025T/blob/main/datasheet/RX8025T-Datasheet-summary.pdf).
+
+- RTC RX8025T-UA
+  - ± 1.9 x 10-6 / 0 ºC to +40 ºC (Equivalent to 5 seconds of month deviation)
+  - ± 3.4 x 10-6 / -40 ºC to +85 ºC (Equivalent to 9 seconds of month deviation)
+
+- RTC RX8025T-UB
+  - ± 3.8 x 10-6 / 0 ºC to +50 ºC (Equivalent to 10 seconds of month deviation)
+  - ± 5.0 x 10-6 / -40 ºC to +85 ºC (Equivalent to 13 seconds of month deviation)
 
 ## Examples ##
 The following example sketches are included with the **RTC-RX8025T** library:
