@@ -1,2 +1,0 @@
-- name: Compile Arduino Sketches
-  uses: arduino/compile-sketches@v1.0.1
