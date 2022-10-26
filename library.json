@@ -1,5 +1,5 @@
 {
-  "name": "RTC-RX8025T",
+  "name": "RTC_RX8025T",
   "keywords": "i2c, rtc, time, clock",
   "description": "RX8025T RTC (Real-Time-Clock)",
   "repository":
