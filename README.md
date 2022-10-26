@@ -11,8 +11,8 @@ Marcin Saj 25 Oct 2022
 The **RTC_RX8025T** library is based on the Paul Stoffregen [library DS3232RTC](https://github.com/PaulStoffregen/DS3232RTC).
 
 ## RTC RX8025T Module
-- [Project website - Datasheet](https://nixietester.com/project/real-time-clock-rx8025t)
-- [Availability - How to get](https://nixietester.com/product/real-time-clock-rx8025t)
+- [Project website - Datasheet](https://nixietester.com/project/RTC_RX8025T)
+- [Availability - How to get](https://nixietester.com/product/RTC_RX8025T)
 - [Arduino Library - How to use](https://github.com/marcinsaj/RTC_RX8025T)
 
 ## Timekeeping accuracy ##
@@ -57,11 +57,11 @@ To use the **RTC_RX8025T** library, the Time and Wire libraries must also be inc
 
 
 
-<p align="center"><img src="https://github.com/marcinsaj/Real-Time-Clock-RX8025T/blob/main/extras/Real-Time-Clock-RTC_RX8025T-01.jpg"></p>
-<p align="center"><img src="https://github.com/marcinsaj/Real-Time-Clock-RX8025T/blob/main/extras/Real-Time-Clock-RTC_RX8025T-02.jpg"></p>
-<p align="center"><img src="https://github.com/marcinsaj/Real-Time-Clock-RX8025T/blob/main/datasheet/real-time-clock-RTC_RX8025T-pinout-1.jpg"></p>
-<p align="center"><img src="https://github.com/marcinsaj/Real-Time-Clock-RX8025T/blob/main/datasheet/real-time-clock-RTC_RX8025T-pinout-2.jpg"></p>
-<p align="center"><img src="https://github.com/marcinsaj/Real-Time-Clock-RX8025T/blob/main/datasheet/real-time-clock-RTC_RX8025T-pinout-info.jpg"></p>
-<p align="center"><img src="https://github.com/marcinsaj/Real-Time-Clock-RX8025T/blob/main/datasheet/real-time-clock-RTC_RX8025T-dimensions-1.jpg"></p>
-<p align="center"><img src="https://github.com/marcinsaj/Real-Time-Clock-RX8025T/blob/main/datasheet/real-time-clock-RTC_RX8025T-dimensions-2.jpg"></p>
-<p align="center"><img src="https://github.com/marcinsaj/Real-Time-Clock-RX8025T/blob/main/datasheet/Real-Time-Clock-RX8025T-Schematic.png"></p>
+<p align="center"><img src="https://github.com/marcinsaj/RTC_RX8025T/blob/main/extras/Real-Time-Clock-RTC_RX8025T-01.jpg"></p>
+<p align="center"><img src="https://github.com/marcinsaj/RTC_RX8025T/blob/main/extras/Real-Time-Clock-RTC_RX8025T-02.jpg"></p>
+<p align="center"><img src="https://github.com/marcinsaj/RTC_RX8025T/blob/main/datasheet/real-time-clock-RTC_RX8025T-pinout-1.jpg"></p>
+<p align="center"><img src="https://github.com/marcinsaj/RTC_RX8025T/blob/main/datasheet/real-time-clock-RTC_RX8025T-pinout-2.jpg"></p>
+<p align="center"><img src="https://github.com/marcinsaj/RTC_RX8025T/blob/main/datasheet/real-time-clock-RTC_RX8025T-pinout-info.jpg"></p>
+<p align="center"><img src="https://github.com/marcinsaj/RTC_RX8025T/blob/main/datasheet/real-time-clock-RTC_RX8025T-dimensions-1.jpg"></p>
+<p align="center"><img src="https://github.com/marcinsaj/RTC_RX8025T/blob/main/datasheet/real-time-clock-RTC_RX8025T-dimensions-2.jpg"></p>
+<p align="center"><img src="https://github.com/marcinsaj/RTC_RX8025T/blob/main/datasheet/RTC_RX8025T-Schematic.png"></p>
