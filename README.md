@@ -14,15 +14,8 @@ The **RTC-RX8025T** library is based on the Paul Stoffregen [library DS3232RTC](
 - [Availability - How to get](https://nixietester.com/product/real-time-clock-rx8025t)
 - [Arduino Library - How to use](https://github.com/marcinsaj/RTC-RX8025T)
 
-## Library Installation ##
-To use the **RTC-RX8025T** library:  
-- Go to https://github.com/marcinsaj/RTC-RX8025T, click the **Download ZIP** button and save the ZIP file to a convenient location on your PC.
-- Uncompress the downloaded file.  This will result in a folder containing all the files for the library, that has a name that includes the branch name, usually **RTC-RX8025T-master**.
-- Rename the folder to just **RTC-RX8025T**.
-- Copy the renamed folder to the Arduino sketchbook\libraries folder.
-
 ## Timekeeping accuracy ##
-The accuracy depends on the version of the clock used and the operating temperature, more in the [summary](https://github.com/marcinsaj/RTC-RX8025T/blob/main/datasheet/RX8025T-Datasheet-summary.pdf).
+The accuracy depends on the version of the RTC module used and the operating temperature, more in the [summary](https://github.com/marcinsaj/RTC-RX8025T/blob/main/datasheet/RX8025T-Datasheet-summary.pdf).
 
 - RTC RX8025T-UA
   - ± 1.9 x 10-6 / 0 ºC to +40 ºC (Equivalent to 5 seconds of month deviation)
@@ -31,6 +24,13 @@ The accuracy depends on the version of the clock used and the operating temperat
 - RTC RX8025T-UB
   - ± 3.8 x 10-6 / 0 ºC to +50 ºC (Equivalent to 10 seconds of month deviation)
   - ± 5.0 x 10-6 / -40 ºC to +85 ºC (Equivalent to 13 seconds of month deviation)
+
+## Library Installation ##
+To use the **RTC-RX8025T** library:  
+- Go to https://github.com/marcinsaj/RTC-RX8025T, click the **Download ZIP** button and save the ZIP file to a convenient location on your PC.
+- Uncompress the downloaded file.  This will result in a folder containing all the files for the library, that has a name that includes the branch name, usually **RTC-RX8025T-master**.
+- Rename the folder to just **RTC-RX8025T**.
+- Copy the renamed folder to the Arduino sketchbook\libraries folder.
 
 ## Examples ##
 The following example sketches are included with the **RTC-RX8025T** library:
