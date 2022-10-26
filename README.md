@@ -30,9 +30,9 @@ To use the **RTC-RX8025T** library:
 
 ## Examples ##
 The following example sketches are included with the **RTC-RX8025T** library:
-- **SetDateTimeRTC** - Set and displays the RTC date and time.
-- **InterruptOutputRTC** - Generate an interrupt by the RTC (INT output) every second or every minute and handle the interrupt.
-- **FrequencyoutputRTC** - Generate square wave by RTC (FOUT output) with preset frequencies: 32768 kHz, 1024 kHz, 1Hz.
+- [SetDateTimeRTC](https://github.com/marcinsaj/RTC-RX8025T/blob/main/examples/SetDateTimeRTC/SetDateTimeRTC.ino) - Set and displays the RTC date and time.
+- [InterruptOutputRTC](https://github.com/marcinsaj/RTC-RX8025T/blob/main/examples/InterruptOutputRTC/InterruptOutputRTC.ino) - Generate an interrupt by the RTC (INT output) every second or every minute and handle the interrupt.
+- [FrequencyoutputRTC](https://github.com/marcinsaj/RTC-RX8025T/blob/main/examples/FrequencyoutputRTC/FrequencyoutputRTC.ino) - Generate square wave by RTC (FOUT output) with preset frequencies: 32768 kHz, 1024 kHz, 1Hz.
 To do:
 - Alarm - not yet implemented in the library
 - Timer - not yet implemented in the library
