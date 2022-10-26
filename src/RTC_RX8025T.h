@@ -10,8 +10,8 @@
  * https://github.com/marcinsaj/RTC-RX8025T                           	*
  *----------------------------------------------------------------------*/ 
 
-#ifndef RTC-RX8025T_h
-#define RTC-RX8025T_h
+#ifndef RTC_RX8025T_h
+#define RTC_RX8025T_h
 
 #include <TimeLib.h>
 
