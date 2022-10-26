@@ -11,8 +11,8 @@ Marcin Saj 25 Oct 2022
 The **RTC_RX8025T** library is based on the Paul Stoffregen [library DS3232RTC](https://github.com/PaulStoffregen/DS3232RTC).
 
 ## RTC RX8025T Module
-- [Project website - Datasheet](https://nixietester.com/project/RTC-RX8025T)
-- [Availability - How to get](https://nixietester.com/product/RTC-RX8025T)
+- [Project website - Datasheet](https://nixietester.com/project/real-time-clock-rx8025t)
+- [Availability - How to get](https://nixietester.com/product/real-time-clock-rx8025t)
 - [Arduino Library - How to use](https://github.com/marcinsaj/RTC_RX8025T)
 
 ## Timekeeping accuracy ##
