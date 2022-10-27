@@ -4,10 +4,10 @@
  *                                                                      *
  * The MIT License                                                      *
  * Marcin Saj 25 OCT 2022                                               *
- * https://github.com/marcinsaj/RTC-RX8025T                             *
+ * https://github.com/marcinsaj/RTC_RX8025T                             *
  *----------------------------------------------------------------------*/
 
-#include <RTC-RX8025T.h>      //https://github.com/marcinsaj/RTC-RX8025T
+#include <RTC-RX8025T.h>      //https://github.com/marcinsaj/RTC_RX8025T
 #include <TimeLib.h>          //https://github.com/PaulStoffregen/Time
 #include <Wire.h>             //https://arduino.cc/en/Reference/Wire (included with Arduino IDE)
 
