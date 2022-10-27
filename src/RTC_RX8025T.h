@@ -7,7 +7,7 @@
  *                                                                      *
  * The MIT License														*
  * Marcin Saj 25 OCT 2022                                           	*
- * https://github.com/marcinsaj/RTC-RX8025T                           	*
+ * https://github.com/marcinsaj/RTC_RX8025T                           	*
  *----------------------------------------------------------------------*/ 
 
 #ifndef RTC_RX8025T_h
