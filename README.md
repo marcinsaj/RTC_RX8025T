@@ -27,8 +27,12 @@ The accuracy depends on the version of the RTC module used and the operating tem
   - ± 5.0 x 10-6 / -40 ºC to +85 ºC (Equivalent to 13 seconds of month deviation)
 
 ## Library Installation ##
-To use the **RTC_RX8025T** library:  
-- Go to https://github.com/marcinsaj/RTC_RX8025T, click the **Download ZIP** button and save the ZIP file to a convenient location on your PC.
+To use the **RTC_RX8025T** library:
+1.
+- Open Library Manager in Arduino IDE, 
+- type library name "RTC_RX8025T" and install.
+2.
+- Or go to https://github.com/marcinsaj/RTC_RX8025T, click the **Download ZIP** button and save the ZIP file to a convenient location on your PC.
 - Uncompress the downloaded file.  This will result in a folder containing all the files for the library, that has a name that includes the branch name, usually **RTC_RX8025T-master** or **RTC_RX8025T-main**.
 - Rename the folder to just **RTC_RX8025T**.
 - Copy the renamed folder to the Arduino sketchbook\libraries folder.
