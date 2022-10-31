@@ -1,14 +1,14 @@
 /*----------------------------------------------------------------------*
  * A simple example of how to handle the FOUT output of the RTC         *
  * to generate square wave with different frequencies.                  *
- *                                                                      *                                                                      
+ *                                                                      *
  * Frequency options:                                                   *
- * "FOUT_32768" - 32.768kHz,                                            *                        
+ * "FOUT_32768" - 32.768kHz,                                            *
  * "FOUT_1024"  - 1024Hz,                                               *
  * "FOUT_1"     - 1Hz.                                                  *
  *                                                                      *
  * The FOE RTC input is used to control                                 *
- * the on-off switching of the FOUT output. FOE "HIGH" - FOUT active    *                                                                 
+ * the on-off switching of the FOUT output. FOE "HIGH" - FOUT active    *
  *                                                                      *
  * The MIT License                                                      *
  * Marcin Saj 25 OCT 2022                                               *
