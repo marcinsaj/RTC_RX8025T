@@ -5,7 +5,7 @@
  *                                                                      *
  * This library is based on the Paul Stoffregen library DS3232RTC       *
  *                                                                      *
- * The MIT License														*
+ * The MIT License							*
  * Marcin Saj 25 OCT 2022                                           	*
  * https://github.com/marcinsaj/RTC_RX8025T                           	*
  *----------------------------------------------------------------------*/ 
