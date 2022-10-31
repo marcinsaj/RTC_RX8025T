@@ -170,10 +170,10 @@ uint8_t RTC_RX8025T::readRTC(uint8_t addr)
 
 /*----------------------------------------------------------------------*
  * RTC initialization, cleaning of registers and flags.                 *
- * If the VLF flag is "1" there was data loss or						*
- * supply voltage drop or powering up from 0V.							*
- * If VDET flag is "1" temperature compensation is not working.			*
- * Default settings.                   									*
+ * If the VLF flag is "1" there was data loss or			*
+ * supply voltage drop or powering up from 0V.				*
+ * If VDET flag is "1" temperature compensation is not working.		*
+ * Default settings.                   					*
  *----------------------------------------------------------------------*/
 void RTC_RX8025T::init(void)
 {
@@ -195,10 +195,10 @@ void RTC_RX8025T::init(void)
 }
 
 /*----------------------------------------------------------------------*
- * Time update interrupt initialization setup.							*
- * Function generates - INT output - interrupt events at one-second		* 
- * or one-minute intervals.												*
- * USEL bit "0"-every second, "1"-every minute.							*
+ * Time update interrupt initialization setup.				*
+ * Function generates - INT output - interrupt events at one-second	* 
+ * or one-minute intervals.						*
+ * USEL bit "0"-every second, "1"-every minute.				*
  *----------------------------------------------------------------------*/
 void RTC_RX8025T::initTUI(uint8_t option)
 {
@@ -212,8 +212,8 @@ void RTC_RX8025T::initTUI(uint8_t option)
 }
 
 /*----------------------------------------------------------------------*
- * Time update interrupt event ON/OFF.									*
- * UIE bit "1"-ON, "0"-OFF                            					*
+ * Time update interrupt event ON/OFF.					*
+ * UIE bit "1"-ON, "0"-OFF                            			*
  *----------------------------------------------------------------------*/
 void RTC_RX8025T::statusTUI(uint8_t status)
 {
@@ -227,10 +227,10 @@ void RTC_RX8025T::statusTUI(uint8_t status)
 }
 
 /*----------------------------------------------------------------------*
- * Time update interrupt UF status flag.								*
- * If for some reason the hardware interrupt has not been 				*
- * registered/handled, it is always possible to check the UF flag. 		*
- * If UF"1" the interrupt has occurred.									*
+ * Time update interrupt UF status flag.				*
+ * If for some reason the hardware interrupt has not been 		*
+ * registered/handled, it is always possible to check the UF flag. 	*
+ * If UF"1" the interrupt has occurred.					*
  *----------------------------------------------------------------------*/
 bool RTC_RX8025T::checkTUI(void)
 {	
@@ -250,8 +250,8 @@ bool RTC_RX8025T::checkTUI(void)
 }
 
 /*----------------------------------------------------------------------*
- * Temperature compensation interval settings.							*
- * CSEL0, CSEL1 - 0.5s, 2s-default, 10s, 30s							*
+ * Temperature compensation interval settings.				*
+ * CSEL0, CSEL1 - 0.5s, 2s-default, 10s, 30s				*
  *----------------------------------------------------------------------*/
 void RTC_RX8025T::tempCompensation(uint8_t option)
 {
@@ -265,9 +265,9 @@ void RTC_RX8025T::tempCompensation(uint8_t option)
 }
 
 /*----------------------------------------------------------------------*
- * FOUT frequency output settings										*
- * If FOE input = "H" (high level) then FOUT is active.					*
- * FSEL0, FSEL1 - 32768Hz, 1024H, 1Hz									*
+ * FOUT frequency output settings					*
+ * If FOE input = "H" (high level) then FOUT is active.			*
+ * FSEL0, FSEL1 - 32768Hz, 1024H, 1Hz					*
  *----------------------------------------------------------------------*/
 void RTC_RX8025T::initFOUT(uint8_t option)
 {
@@ -283,7 +283,7 @@ void RTC_RX8025T::initFOUT(uint8_t option)
 
 /*----------------------------------------------------------------------*
  * Decimal-to-Dedicated format conversion - RTC datasheet page 12       *
- * Sunday 0x01,...Wednesday 0x08,...Saturday 0x40						*
+ * Sunday 0x01,...Wednesday 0x08,...Saturday 0x40			*
  *----------------------------------------------------------------------*/
 uint8_t RTC_RX8025T::wday2bin(uint8_t wday)
 {
@@ -291,8 +291,8 @@ uint8_t RTC_RX8025T::wday2bin(uint8_t wday)
 }
 
 /*----------------------------------------------------------------------*
- * Dedicated-to-Decimal format conversion - RTC datasheet page 12		*
- * Sunday 1, Monday 2, Tuesday 3...										*
+ * Dedicated-to-Decimal format conversion - RTC datasheet page 12	*
+ * Sunday 1, Monday 2, Tuesday 3...					*
  *----------------------------------------------------------------------*/
 uint8_t __attribute__ ((noinline)) RTC_RX8025T::bin2wday(uint8_t wday)
 {
