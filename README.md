@@ -4,7 +4,8 @@ https://github.com/marcinsaj/RTC_RX8025T
 The MIT License  
 Marcin Saj 25 Oct 2022  
 
-<a href="https://www.buymeacoffee.com/marcinsaj"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=marcinsaj&button_colour=75b8fa&font_colour=000000&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00" /></a>
+<a href="https://www.buymeacoffee.com/marcinsaj"><img src="https://github.com/marcinsaj/marcinsaj/blob/main/Buy-me-a-coffee.png" /></a> 
+</br>
 
 ## Introduction ##
 **RTC_RX8025T** is an Arduino library that supports the Seiko Epson RX8025T Real Time Clock. This library is intended to be used with the [Arduino Time library](http://www.arduino.cc/playground/Code/Time). RTC_RX8025T implements functions to support the Date and Time functions, interrupt output, frequency output, alarm and timer functions.
