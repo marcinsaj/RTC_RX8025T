@@ -20,20 +20,20 @@ void setup(void)
   delay(3000);
   
   //RX8025T initialization
-  RTC.init();
+  RTC_RX8025T.init();
           
-  //The Time library is a software RTC. 
-  //"system time" it is referring to the current time according to the software RTC.
+  //The Time library is a software RTC_RX8025T. 
+  //"system time" it is referring to the current time according to the software RTC_RX8025T.
   //Set the system time to 10h 23m 30s on 25 Oct 2022
   setTime(10, 23, 30, 25, 10, 22);
   //Set the RTC from the system time
-  RTC.set(now());
+  RTC_RX8025T.set(now());
 }
 
 void loop(void)
 {
   //Read the time from the RTC and store it in the tm structure
-  RTC.read(tm);
+  RTC_RX8025T.read(tm);
   printDateTime();
 
   delay(1000);
