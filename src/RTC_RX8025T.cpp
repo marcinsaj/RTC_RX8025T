@@ -1,13 +1,13 @@
 /*----------------------------------------------------------------------*
- * RTC_RX8025T.cpp - Arduino library for the Seiko Epson RX8025T       	*
+ * RTC_RX8025T.cpp - Arduino library for the Seiko Epson RX8025T         *
  * Real Time Clock. This library is intended for use with the Arduino   *
  * TimeLib.h library, http://www.arduino.cc/playground/Code/Time        *
  *                                                                      *
  * This library is based on the Paul Stoffregen library DS3232RTC       *
  *                                                                      *
- * The MIT License							*
- * Marcin Saj 25 OCT 2022                                           	*
- * https://github.com/marcinsaj/RTC_RX8025T                           	*
+ * The MIT License                                                      *
+ * Marcin Saj 25 OCT 2022                                               *
+ * https://github.com/marcinsaj/RTC_RX8025T                             *
  *----------------------------------------------------------------------*/ 
 
 #include <RTC_RX8025T.h>
@@ -40,31 +40,31 @@
 #endif
 
 /*----------------------------------------------------------------------*
- * I2C setup RTC initialization, cleaning of registers and flags.       *
- * If the VLF flag is "1" there was data loss or						*
- * supply voltage drop or powering up from 0V.							*
- * If VDET flag is "1" temperature compensation is not working.			*
- * Default settings.                   									*
+ * I2C start, RTC initialization, cleaning of registers and flags.      *
+ * If the VLF flag is "1" there was data loss or                        *
+ * supply voltage drop or powering up from 0V.                          *
+ * If VDET flag is "1" temperature compensation is not working.         *
+ * Default settings.                                                    *
  *----------------------------------------------------------------------*/
 void RTC_RX8025T::init(void)
 {
-    uint8_t statusReg, mask;
+  uint8_t statusReg, mask;
+
+  i2cBegin();  
     
-    i2cBegin();
-	
-	statusReg = readRTC(RX8025T_RTC_STATUS);
-    mask = _BV(VLF) | _BV(VDET);
+  statusReg = readRTC(RX8025T_RTC_STATUS);
+  mask = _BV(VLF) | _BV(VDET);
     
-	if(statusReg & mask) 
-	{
-		writeRTC(RX8025T_RTC_CONTROL, _BV(RESET)); // Reset module
-	}
-	
-	// Clear control registers
-	writeRTC(RX8025T_RTC_EXT, 0x00);
-	writeRTC(RX8025T_RTC_STATUS, 0x00);
-	// Dafault value of temperature compensation interval is 2 seconds
-	writeRTC(RX8025T_RTC_CONTROL, (0x00 | INT_2_SEC));
+  if(statusReg & mask) 
+  {
+    writeRTC(RX8025T_RTC_CONTROL, _BV(RESET)); // Reset module
+  }
+  
+  // Clear control registers
+  writeRTC(RX8025T_RTC_EXT, 0x00);
+  writeRTC(RX8025T_RTC_STATUS, 0x00);
+  // Dafault value of temperature compensation interval is 2 seconds
+  writeRTC(RX8025T_RTC_CONTROL, (0x00 | INT_2_SEC));
 }
 
 /*----------------------------------------------------------------------*
@@ -74,10 +74,10 @@ void RTC_RX8025T::init(void)
  *----------------------------------------------------------------------*/
 time_t RTC_RX8025T::get()
 {
-    tmElements_t tm;
+  tmElements_t tm;
     
-    if ( read(tm) ) return 0;
-    return( makeTime(tm) );
+  if ( read(tm) ) return 0;
+  return( makeTime(tm) );
 }
 
 /*----------------------------------------------------------------------*
@@ -87,10 +87,10 @@ time_t RTC_RX8025T::get()
  *----------------------------------------------------------------------*/
 uint8_t RTC_RX8025T::set(time_t t)
 {
-    tmElements_t tm;
-
-    breakTime(t, tm);
-    return ( write(tm) );
+  tmElements_t tm;
+  
+  breakTime(t, tm);
+  return ( write(tm) );
 }
 
 /*----------------------------------------------------------------------*
@@ -99,19 +99,19 @@ uint8_t RTC_RX8025T::set(time_t t)
  *----------------------------------------------------------------------*/
 uint8_t RTC_RX8025T::read(tmElements_t &tm)
 {
-    i2cBeginTransmission(RX8025T_ADDR);
-    i2cWrite((uint8_t)RX8025T_SECONDS);
-    if ( uint8_t e = i2cEndTransmission() ) return e;
-    //request 7 bytes (secs, min, hr, dow, date, mth, yr)
-    i2cRequestFrom(RX8025T_ADDR, tmNbrFields);
-    tm.Second = bcd2dec(i2cRead());   
-    tm.Minute = bcd2dec(i2cRead());
-    tm.Hour = bcd2dec(i2cRead());
-    tm.Wday = bin2wday(i2cRead());
-    tm.Day = bcd2dec(i2cRead());
-    tm.Month = bcd2dec(i2cRead());
-    tm.Year = y2kYearToTm(bcd2dec(i2cRead()));
-    return 0;
+  i2cBeginTransmission(RX8025T_ADDR);
+  i2cWrite((uint8_t)RX8025T_SECONDS);
+  if ( uint8_t e = i2cEndTransmission() ) return e;
+  //request 7 bytes (secs, min, hr, dow, date, mth, yr)
+  i2cRequestFrom(RX8025T_ADDR, tmNbrFields);
+  tm.Second = bcd2dec(i2cRead());   
+  tm.Minute = bcd2dec(i2cRead());
+  tm.Hour = bcd2dec(i2cRead());
+  tm.Wday = bin2wday(i2cRead());
+  tm.Day = bcd2dec(i2cRead());
+  tm.Month = bcd2dec(i2cRead());
+  tm.Year = y2kYearToTm(bcd2dec(i2cRead()));
+  return 0;
 }
 
 /*----------------------------------------------------------------------*
@@ -121,17 +121,17 @@ uint8_t RTC_RX8025T::read(tmElements_t &tm)
  *----------------------------------------------------------------------*/
 uint8_t RTC_RX8025T::write(tmElements_t &tm)
 {
-    i2cBeginTransmission(RX8025T_ADDR);
-    i2cWrite((uint8_t)RX8025T_SECONDS);
-    i2cWrite(dec2bcd(tm.Second));
-    i2cWrite(dec2bcd(tm.Minute));
-    i2cWrite(dec2bcd(tm.Hour));
-    i2cWrite(wday2bin(tm.Wday));
-    i2cWrite(dec2bcd(tm.Day));
-    i2cWrite(dec2bcd(tm.Month));
-    i2cWrite(dec2bcd(tmYearToY2k(tm.Year))); 
-    uint8_t ret = i2cEndTransmission();
-    return ret;
+  i2cBeginTransmission(RX8025T_ADDR);
+  i2cWrite((uint8_t)RX8025T_SECONDS);
+  i2cWrite(dec2bcd(tm.Second));
+  i2cWrite(dec2bcd(tm.Minute));
+  i2cWrite(dec2bcd(tm.Hour));
+  i2cWrite(wday2bin(tm.Wday));
+  i2cWrite(dec2bcd(tm.Day));
+  i2cWrite(dec2bcd(tm.Month));
+  i2cWrite(dec2bcd(tmYearToY2k(tm.Year))); 
+  uint8_t ret = i2cEndTransmission();
+  return ret;
 }
 
 /*----------------------------------------------------------------------*
@@ -143,10 +143,10 @@ uint8_t RTC_RX8025T::write(tmElements_t &tm)
  *----------------------------------------------------------------------*/
 uint8_t RTC_RX8025T::writeRTC(uint8_t addr, uint8_t *values, uint8_t nBytes)
 {
-    i2cBeginTransmission(RX8025T_ADDR);
-    i2cWrite(addr);
-    for (uint8_t i=0; i<nBytes; i++) i2cWrite(values[i]);
-    return i2cEndTransmission();
+  i2cBeginTransmission(RX8025T_ADDR);
+  i2cWrite(addr);
+  for (uint8_t i=0; i<nBytes; i++) i2cWrite(values[i]);
+  return i2cEndTransmission();
 }
 
 /*----------------------------------------------------------------------*
@@ -156,7 +156,7 @@ uint8_t RTC_RX8025T::writeRTC(uint8_t addr, uint8_t *values, uint8_t nBytes)
  *----------------------------------------------------------------------*/
 uint8_t RTC_RX8025T::writeRTC(uint8_t addr, uint8_t value)
 {
-    return ( writeRTC(addr, &value, 1) );
+  return ( writeRTC(addr, &value, 1) );
 }
 
 /*----------------------------------------------------------------------*
@@ -168,12 +168,12 @@ uint8_t RTC_RX8025T::writeRTC(uint8_t addr, uint8_t value)
  *----------------------------------------------------------------------*/
 uint8_t RTC_RX8025T::readRTC(uint8_t addr, uint8_t *values, uint8_t nBytes)
 {
-    i2cBeginTransmission(RX8025T_ADDR);
-    i2cWrite(addr);
-    if ( uint8_t e = i2cEndTransmission() ) return e;
-    i2cRequestFrom( (uint8_t)RX8025T_ADDR, nBytes );
-    for (uint8_t i=0; i<nBytes; i++) values[i] = i2cRead();
-    return 0;
+  i2cBeginTransmission(RX8025T_ADDR);
+  i2cWrite(addr);
+  if ( uint8_t e = i2cEndTransmission() ) return e;
+  i2cRequestFrom( (uint8_t)RX8025T_ADDR, nBytes );
+  for (uint8_t i=0; i<nBytes; i++) values[i] = i2cRead();
+  return 0;
 }
 
 /*----------------------------------------------------------------------*
@@ -182,120 +182,120 @@ uint8_t RTC_RX8025T::readRTC(uint8_t addr, uint8_t *values, uint8_t nBytes)
  *----------------------------------------------------------------------*/
 uint8_t RTC_RX8025T::readRTC(uint8_t addr)
 {
-    uint8_t b;
+  uint8_t b;
     
-    readRTC(addr, &b, 1);
-    return b;
+  readRTC(addr, &b, 1);
+  return b;
 }
 
 /*----------------------------------------------------------------------*
- * Time update interrupt initialization setup.				*
- * Function generates - INT output - interrupt events at one-second	* 
- * or one-minute intervals.						*
- * USEL bit "0"-every second, "1"-every minute.				*
+ * Time update interrupt initialization setup.                          *
+ * Function generates - INT output - interrupt events at one-second     * 
+ * or one-minute intervals.                                             *
+ * USEL bit "0"-every second, "1"-every minute.                         *
  *----------------------------------------------------------------------*/
 void RTC_RX8025T::initTUI(uint8_t option)
 {
-	uint8_t extReg, mask;
+  uint8_t extReg, mask;
     
-    extReg = readRTC(RX8025T_RTC_EXT);
-    mask = _BV(USEL);
-	
-	extReg = (extReg & ~mask) | (mask & option);
-    writeRTC(RX8025T_RTC_EXT, extReg);  	
+  extReg = readRTC(RX8025T_RTC_EXT);
+  mask = _BV(USEL);
+  
+  extReg = (extReg & ~mask) | (mask & option);
+  writeRTC(RX8025T_RTC_EXT, extReg);    
 }
 
 /*----------------------------------------------------------------------*
- * Time update interrupt event ON/OFF.					*
- * UIE bit "1"-ON, "0"-OFF                            			*
+ * Time update interrupt event ON/OFF.                                  *
+ * UIE bit "1"-ON, "0"-OFF                                              *
  *----------------------------------------------------------------------*/
 void RTC_RX8025T::statusTUI(uint8_t status)
 {
-    uint8_t controlReg, mask;
+  uint8_t controlReg, mask;
     
-    controlReg = readRTC(RX8025T_RTC_CONTROL);
-    mask = _BV(UIE);
+  controlReg = readRTC(RX8025T_RTC_CONTROL);
+  mask = _BV(UIE);
     
-    controlReg = (controlReg & ~mask) | (mask & status);
-    writeRTC(RX8025T_RTC_CONTROL, controlReg); 
+  controlReg = (controlReg & ~mask) | (mask & status);
+  writeRTC(RX8025T_RTC_CONTROL, controlReg); 
 }
 
 /*----------------------------------------------------------------------*
- * Time update interrupt UF status flag.				*
- * If for some reason the hardware interrupt has not been 		*
- * registered/handled, it is always possible to check the UF flag. 	*
- * If UF"1" the interrupt has occurred.					*
+ * Time update interrupt UF status flag.                                *
+ * If for some reason the hardware interrupt has not been               *
+ * registered/handled, it is always possible to check the UF flag.      *
+ * If UF"1" the interrupt has occurred.                                 *
  *----------------------------------------------------------------------*/
 bool RTC_RX8025T::checkTUI(void)
-{	
-	uint8_t statusReg, mask;
+{ 
+  uint8_t statusReg, mask;
     
-    statusReg = readRTC(RX8025T_RTC_STATUS);
-    mask = _BV(UF);
+  statusReg = readRTC(RX8025T_RTC_STATUS);
+  mask = _BV(UF);
     
-	if(statusReg & mask) 
-	{
-		//Clear UF flag
-		statusReg = statusReg & ~mask;
-		writeRTC(RX8025T_RTC_STATUS, statusReg); 
-		return 1;
-	}
-	else return 0;
+  if(statusReg & mask) 
+  {
+    //Clear UF flag
+    statusReg = statusReg & ~mask;
+    writeRTC(RX8025T_RTC_STATUS, statusReg); 
+    return 1;
+  }
+  else return 0;
 }
 
 /*----------------------------------------------------------------------*
- * Temperature compensation interval settings.				*
- * CSEL0, CSEL1 - 0.5s, 2s-default, 10s, 30s				*
+ * Temperature compensation interval settings.                          *
+ * CSEL0, CSEL1 - 0.5s, 2s-default, 10s, 30s                            *
  *----------------------------------------------------------------------*/
 void RTC_RX8025T::tempCompensation(uint8_t option)
 {
-	uint8_t controlReg, mask;
-	
-	controlReg = readRTC(RX8025T_RTC_CONTROL);
-	mask = _BV(CSEL0) | _BV(CSEL1);
-	
-    controlReg = (controlReg & ~mask) | (mask & option);
-    writeRTC(RX8025T_RTC_CONTROL, controlReg);	
+  uint8_t controlReg, mask;
+  
+  controlReg = readRTC(RX8025T_RTC_CONTROL);
+  mask = _BV(CSEL0) | _BV(CSEL1);
+  
+  controlReg = (controlReg & ~mask) | (mask & option);
+  writeRTC(RX8025T_RTC_CONTROL, controlReg);  
 }
 
 /*----------------------------------------------------------------------*
- * FOUT frequency output settings					*
- * If FOE input = "H" (high level) then FOUT is active.			*
- * FSEL0, FSEL1 - 32768Hz, 1024H, 1Hz					*
+ * FOUT frequency output settings                                       *
+ * If FOE input = "H" (high level) then FOUT is active.                 *
+ * FSEL0, FSEL1 - 32768Hz, 1024H, 1Hz                                   *
  *----------------------------------------------------------------------*/
 void RTC_RX8025T::initFOUT(uint8_t option)
 {
-	
-	uint8_t extReg, mask;
+  
+  uint8_t extReg, mask;
     
-    extReg = readRTC(RX8025T_RTC_EXT);
-    mask = _BV(FSEL0) | _BV(FSEL1);   
+  extReg = readRTC(RX8025T_RTC_EXT);
+  mask = _BV(FSEL0) | _BV(FSEL1);   
     
-	extReg = (extReg & ~mask) | (mask & option);
-    writeRTC(RX8025T_RTC_EXT, extReg); 	
+  extReg = (extReg & ~mask) | (mask & option);
+  writeRTC(RX8025T_RTC_EXT, extReg);  
 }
 
 /*----------------------------------------------------------------------*
  * Decimal-to-Dedicated format conversion - RTC datasheet page 12       *
- * Sunday 0x01,...Wednesday 0x08,...Saturday 0x40			*
+ * Sunday 0x01,...Wednesday 0x08,...Saturday 0x40                       *
  *----------------------------------------------------------------------*/
 uint8_t RTC_RX8025T::wday2bin(uint8_t wday)
 {
-    return _BV(wday - 1);
+  return _BV(wday - 1);
 }
 
 /*----------------------------------------------------------------------*
- * Dedicated-to-Decimal format conversion - RTC datasheet page 12	*
- * Sunday 1, Monday 2, Tuesday 3...					*
+ * Dedicated-to-Decimal format conversion - RTC datasheet page 12       *
+ * Sunday 1, Monday 2, Tuesday 3...                                     *
  *----------------------------------------------------------------------*/
 uint8_t __attribute__ ((noinline)) RTC_RX8025T::bin2wday(uint8_t wday)
 {
-	for(int i = 0; i < 7; i++)
-	{
-		if((wday >> i) == 1) wday = i + 1;
-	}
-	
-	return wday;
+  for(int i = 0; i < 7; i++)
+  {
+    if((wday >> i) == 1) wday = i + 1;
+  }
+  
+  return wday;
 }
 
 /*----------------------------------------------------------------------*
@@ -303,7 +303,7 @@ uint8_t __attribute__ ((noinline)) RTC_RX8025T::bin2wday(uint8_t wday)
  *----------------------------------------------------------------------*/
 uint8_t RTC_RX8025T::dec2bcd(uint8_t n)
 {
-    return n + 6 * (n / 10);
+  return n + 6 * (n / 10);
 }
 
 /*----------------------------------------------------------------------*
@@ -311,5 +311,5 @@ uint8_t RTC_RX8025T::dec2bcd(uint8_t n)
  *----------------------------------------------------------------------*/
 uint8_t __attribute__ ((noinline)) RTC_RX8025T::bcd2dec(uint8_t n)
 {
-    return n - 6 * (n >> 4);
+  return n - 6 * (n >> 4);
 }
