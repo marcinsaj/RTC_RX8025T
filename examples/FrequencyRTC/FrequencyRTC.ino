@@ -61,35 +61,35 @@ void setup(void)
 
 void loop(void)
 {
-    //Read the time from the RTC and store it in the tm structure
-    RTC_RX8025T.read(tm);
-    printDateTime();
+  //Read the time from the RTC and store it in the tm structure
+  RTC_RX8025T.read(tm);
+  printDateTime();
 
-    delay(1000);
+  delay(1000);
 }
 
 void printDateTime(void)
 {
-    Serial.print("Date: ");
-    //Time library macro for convenient Year conversion to calendar format
-    Serial.print(tmYearToCalendar(tm.Year));
-    Serial.print(".");
-    if(tm.Month < 10) Serial.print("0");
-    Serial.print(tm.Month);
-    Serial.print(".");
-    if(tm.Day < 10) Serial.print("0");
-    Serial.print(tm.Day);
-    Serial.print("  ");
+  Serial.print("Date: ");
+  //Time library macro for convenient Year conversion to calendar format
+  Serial.print(tmYearToCalendar(tm.Year));
+  Serial.print(".");
+  if(tm.Month < 10) Serial.print("0");
+  Serial.print(tm.Month);
+  Serial.print(".");
+  if(tm.Day < 10) Serial.print("0");
+  Serial.print(tm.Day);
+  Serial.print("  ");
   
-    Serial.print("Time: ");
-    if(tm.Hour < 10) Serial.print("0");
-    Serial.print(tm.Hour);
-    Serial.print(":");
-    if(tm.Minute < 10) Serial.print("0");
-    Serial.print(tm.Minute);
-    Serial.print(":");
-    if(tm.Second < 10) Serial.print("0");
-    Serial.println(tm.Second);
+  Serial.print("Time: ");
+  if(tm.Hour < 10) Serial.print("0");
+  Serial.print(tm.Hour);
+  Serial.print(":");
+  if(tm.Minute < 10) Serial.print("0");
+  Serial.print(tm.Minute);
+  Serial.print(":");
+  if(tm.Second < 10) Serial.print("0");
+  Serial.println(tm.Second);
 }
 
 //If "frequencyPin" (FOE) "HIGH" then FOUT output is active
