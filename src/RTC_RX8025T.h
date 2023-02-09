@@ -89,6 +89,7 @@ class RTC_RX8025T
 {
     public:
         RTC_RX8025T();
+		void init(void);
         static time_t get(void);    //must be static to work with setSyncProvider() in the Time library
         uint8_t set(time_t t);
         static uint8_t read(tmElements_t &tm);
@@ -97,8 +98,6 @@ class RTC_RX8025T
         uint8_t writeRTC(uint8_t addr, uint8_t value);
         uint8_t readRTC(uint8_t addr, uint8_t *values, uint8_t nBytes);
         uint8_t readRTC(uint8_t addr);
-
-		void init();
 		void tempCompensation(uint8_t option);
 		void initFOUT(uint8_t option);
         void initTUI(uint8_t option);
@@ -113,6 +112,6 @@ class RTC_RX8025T
         static uint8_t bcd2dec(uint8_t n);
 };
 
-extern RTC_RX8025T RTC;
+extern RTC_RX8025T RTC_RX8025T;
 
 #endif
