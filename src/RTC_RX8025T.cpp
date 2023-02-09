@@ -40,11 +40,31 @@
 #endif
 
 /*----------------------------------------------------------------------*
- * Constructor.                                                         *
+ * I2C setup RTC initialization, cleaning of registers and flags.       *
+ * If the VLF flag is "1" there was data loss or						*
+ * supply voltage drop or powering up from 0V.							*
+ * If VDET flag is "1" temperature compensation is not working.			*
+ * Default settings.                   									*
  *----------------------------------------------------------------------*/
-RTC_RX8025T::RTC_RX8025T()
+void RTC_RX8025T::init(void)
 {
+    uint8_t statusReg, mask;
+    
     i2cBegin();
+	
+	statusReg = readRTC(RX8025T_RTC_STATUS);
+    mask = _BV(VLF) | _BV(VDET);
+    
+	if(statusReg & mask) 
+	{
+		writeRTC(RX8025T_RTC_CONTROL, _BV(RESET)); // Reset module
+	}
+	
+	// Clear control registers
+	writeRTC(RX8025T_RTC_EXT, 0x00);
+	writeRTC(RX8025T_RTC_STATUS, 0x00);
+	// Dafault value of temperature compensation interval is 2 seconds
+	writeRTC(RX8025T_RTC_CONTROL, (0x00 | INT_2_SEC));
 }
 
 /*----------------------------------------------------------------------*
@@ -166,32 +186,6 @@ uint8_t RTC_RX8025T::readRTC(uint8_t addr)
     
     readRTC(addr, &b, 1);
     return b;
-}
-
-/*----------------------------------------------------------------------*
- * RTC initialization, cleaning of registers and flags.                 *
- * If the VLF flag is "1" there was data loss or			*
- * supply voltage drop or powering up from 0V.				*
- * If VDET flag is "1" temperature compensation is not working.		*
- * Default settings.                   					*
- *----------------------------------------------------------------------*/
-void RTC_RX8025T::init(void)
-{
-    uint8_t statusReg, mask;
-    
-    statusReg = readRTC(RX8025T_RTC_STATUS);
-    mask = _BV(VLF) | _BV(VDET);
-    
-	if(statusReg & mask) 
-	{
-		writeRTC(RX8025T_RTC_CONTROL, _BV(RESET)); // Reset module
-	}
-	
-	// Clear control registers
-	writeRTC(RX8025T_RTC_EXT, 0x00);
-	writeRTC(RX8025T_RTC_STATUS, 0x00);
-	// Dafault value of temperature compensation interval is 2 seconds
-	writeRTC(RX8025T_RTC_CONTROL, (0x00 | INT_2_SEC));
 }
 
 /*----------------------------------------------------------------------*
@@ -319,5 +313,3 @@ uint8_t __attribute__ ((noinline)) RTC_RX8025T::bcd2dec(uint8_t n)
 {
     return n - 6 * (n >> 4);
 }
-
-RTC_RX8025T RTC = RTC_RX8025T();            //Instantiate an RTC object
