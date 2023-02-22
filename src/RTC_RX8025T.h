@@ -21,6 +21,8 @@
 #include <WProgram.h> 
 #endif
 
+#define _BV(bit) (1 << (bit))
+
 //RX8025T I2C Address
 #define RX8025T_ADDR                0x32
 
@@ -83,12 +85,12 @@
 // FOUT frequency
 #define FOUT_32768	0x00	// or 0x0C
 #define FOUT_1024	0x04
-#define FOUT_1		0x08
+#define FOUT_1		0x08 
 
-class RTC_RX8025T
+class RX8025T
 {
     public:
-        RTC_RX8025T();
+        RX8025T();
         void init(void);
         static time_t get(void);    //must be static to work with setSyncProvider() in the Time library
         uint8_t set(time_t t);
@@ -98,20 +100,20 @@ class RTC_RX8025T
         uint8_t writeRTC(uint8_t addr, uint8_t value);
         uint8_t readRTC(uint8_t addr, uint8_t *values, uint8_t nBytes);
         uint8_t readRTC(uint8_t addr);
-	void tempCompensation(uint8_t option);
-	void initFOUT(uint8_t option);
+		void tempCompensation(uint8_t option);
+		void initFOUT(uint8_t option);
         void initTUI(uint8_t option);
         void statusTUI(uint8_t status);
-	bool checkTUI(void);
+		bool checkTUI(void);
 
     private:
-	uint8_t currentStateUIEbit;
-	uint8_t wday2bin(uint8_t wday);
-	static uint8_t bin2wday(uint8_t wday);
+		uint8_t currentStateUIEbit;
+		uint8_t wday2bin(uint8_t wday);
+		static uint8_t bin2wday(uint8_t wday);
         uint8_t dec2bcd(uint8_t n);
         static uint8_t bcd2dec(uint8_t n);
 };
 
-extern RTC_RX8025T RTC_RX8025T;
+extern RX8025T RTC_RX8025T;
 
 #endif
