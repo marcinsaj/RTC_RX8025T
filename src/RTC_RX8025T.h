@@ -23,10 +23,10 @@
 
 #define _BV(bit) (1 << (bit))
 
-//RX8025T I2C Address
+// RX8025T I2C Address
 #define RX8025T_ADDR                0x32
 
-//RX8025T Register Addresses
+// RX8025T Register Addresses
 #define RX8025T_SECONDS             0x00
 #define RX8025T_MINUTES             0x01
 #define RX8025T_HOURS               0x02
@@ -44,7 +44,7 @@
 #define RX8025T_RTC_STATUS          0x0E
 #define RX8025T_RTC_CONTROL         0x0F
 
-//Extension register bits
+// Extension register bits
 #define TSEL0           0
 #define TSEL1           1
 #define FSEL0           2
@@ -53,14 +53,14 @@
 #define USEL            5
 #define WADA            6
 
-//Status register bits
+// Status register bits
 #define VDET            0
 #define VLF             1
 #define AF              3
 #define TF              4
 #define UF              5
 
-//Control register bits
+// Control register bits
 #define RESET           0
 #define AIE             3
 #define TIE             4
@@ -68,15 +68,15 @@
 #define CSEL0           6
 #define CSEL1           7
 
-//Time update interrupt function
+// Time update interrupt function
 #define INT_SECOND     	0x00
 #define INT_MINUTE     	0x20
 
-//Time update interrupt
+// Time update interrupt
 #define INT_ON         	0x20
 #define INT_OFF         0x00
 
-//Temperature compensation interval
+// Temperature compensation interval
 #define	INT_0_5_SEC	0x00
 #define	INT_2_SEC       0x40
 #define	INT_10_SEC	0x80
@@ -92,7 +92,7 @@ class RX8025T
     public:
         RX8025T();
         void init(void);
-        static time_t get(void);    //must be static to work with setSyncProvider() in the Time library
+        static time_t get(void);    // Must be static to work with setSyncProvider() in the Time library
         uint8_t set(time_t t);
         static uint8_t read(tmElements_t &tm);
         uint8_t write(tmElements_t &tm);
@@ -100,16 +100,16 @@ class RX8025T
         uint8_t writeRTC(uint8_t addr, uint8_t value);
         uint8_t readRTC(uint8_t addr, uint8_t *values, uint8_t nBytes);
         uint8_t readRTC(uint8_t addr);
-		void tempCompensation(uint8_t option);
-		void initFOUT(uint8_t option);
+	void tempCompensation(uint8_t option);
+	void initFOUT(uint8_t option);
         void initTUI(uint8_t option);
         void statusTUI(uint8_t status);
-		bool checkTUI(void);
+	bool checkTUI(void);
 
     private:
-		uint8_t currentStateUIEbit;
-		uint8_t wday2bin(uint8_t wday);
-		static uint8_t bin2wday(uint8_t wday);
+	uint8_t currentStateUIEbit;
+	uint8_t wday2bin(uint8_t wday);
+	static uint8_t bin2wday(uint8_t wday);
         uint8_t dec2bcd(uint8_t n);
         static uint8_t bcd2dec(uint8_t n);
 };
