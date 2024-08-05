@@ -65,7 +65,7 @@ To use the **RTC_RX8025T** library, the Time and Wire libraries must also be inc
 
 
 <p align="center"><img src="https://github.com/marcinsaj/RTC_RX8025T/blob/main/extras/Real-Time-Clock-RTC-RX8025T-01.jpg"></p>
-<p align="center"><img src="https://github.com/marcinsaj/RTC_RX8025T/blob/main/extras/Real-Time-Clock-RTC_RX8025T-02.jpg"></p>
+<p align="center"><img src="https://github.com/marcinsaj/RTC_RX8025T/blob/main/extras/Real-Time-Clock-RTC-RX8025T-02.jpg"></p>
 <p align="center"><img src="https://github.com/marcinsaj/RTC_RX8025T/blob/main/datasheet/real-time-clock-rtc-rx8025t-pinout-1.jpg"></p>
 <p align="center"><img src="https://github.com/marcinsaj/RTC_RX8025T/blob/main/datasheet/real-time-clock-rtc-rx8025t-pinout-2.jpg"></p>
 <p align="center"><img src="https://github.com/marcinsaj/RTC_RX8025T/blob/main/datasheet/real-time-clock-rtc-rx8025t-pinout-info.jpg"></p>
