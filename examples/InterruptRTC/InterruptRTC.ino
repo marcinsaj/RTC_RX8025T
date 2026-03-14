@@ -29,8 +29,8 @@ void setup(void)
   delay(3000);
 
   //Pin and interrupt handling subroutine assignment
-  attachInterrupt(digitalPinToInterrupt(interruptPin), interruptHandling, FALLING);
   pinMode(interruptPin, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(interruptPin), interruptHandling, FALLING);
   
   //RX8025T initialization
   RTC_RX8025T.init();
