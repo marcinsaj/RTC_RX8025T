@@ -68,7 +68,7 @@ void RX8025T::init(void)
   // Clear control registers
   writeRTC(RX8025T_RTC_EXT, 0x00);
   writeRTC(RX8025T_RTC_STATUS, 0x00);
-  // Dafault value of temperature compensation interval is 2 seconds
+  // Default value of temperature compensation interval is 2 seconds
   writeRTC(RX8025T_RTC_CONTROL, (0x00 | INT_2_SEC));
 }
 
@@ -156,7 +156,7 @@ uint8_t RX8025T::writeRTC(uint8_t addr, uint8_t *values, uint8_t nBytes)
 
 /*----------------------------------------------------------------------*
  * Write a single uint8_t to RTC RAM.                                   *
- * Valid address range is 0x00 - 0xFF, no checking.                     *
+ * Valid address range is 0x00 - 0x0F, no checking.                     *
  * Returns the I2C status (zero if successful).                         *
  *----------------------------------------------------------------------*/
 uint8_t RX8025T::writeRTC(uint8_t addr, uint8_t value)
@@ -183,7 +183,7 @@ uint8_t RX8025T::readRTC(uint8_t addr, uint8_t *values, uint8_t nBytes)
 
 /*----------------------------------------------------------------------*
  * Read a single uint8_t from RTC RAM.                                  *
- * Valid address range is 0x00 - 0xFF, no checking.                     *
+ * Valid address range is 0x00 - 0x0F, no checking.                     *
  *----------------------------------------------------------------------*/
 uint8_t RX8025T::readRTC(uint8_t addr)
 {
@@ -299,7 +299,7 @@ uint8_t __attribute__ ((noinline)) RX8025T::bin2wday(uint8_t wday)
   {
     if(wday == _BV(i)) return i + 1;
   }
-  return 0; // błąd — nieprawidłowe dane z RTC
+  return 0; // error — invalid data from RTC
 }
 
 /*----------------------------------------------------------------------*
