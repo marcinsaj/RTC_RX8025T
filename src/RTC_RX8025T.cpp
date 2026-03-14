@@ -187,7 +187,7 @@ uint8_t RX8025T::readRTC(uint8_t addr, uint8_t *values, uint8_t nBytes)
  *----------------------------------------------------------------------*/
 uint8_t RX8025T::readRTC(uint8_t addr)
 {
-  uint8_t b;
+  uint8_t b = 0;
     
   readRTC(addr, &b, 1);
   return b;
