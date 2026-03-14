@@ -141,7 +141,7 @@ uint8_t RX8025T::write(tmElements_t &tm)
 
 /*----------------------------------------------------------------------*
  * Write multiple bytes to RTC RAM.                                     *
- * Valid address range is 0x00 - 0xFF, no checking.                     *
+ * Valid address range is 0x00 - 0x0F, no checking.                    *
  * Number of bytes (nBytes) must be between 1 and 31 (Wire library      *
  * limitation).                                                         *
  * Returns the I2C status (zero if successful).                         *
@@ -166,7 +166,7 @@ uint8_t RX8025T::writeRTC(uint8_t addr, uint8_t value)
 
 /*----------------------------------------------------------------------*
  * Read multiple bytes from RTC RAM.                                    *
- * Valid address range is 0x00 - 0xFF, no checking.                     *
+ * Valid address range is 0x00 - 0x0F, no checking.                     *
  * Number of bytes (nBytes) must be between 1 and 32 (Wire library      *
  * limitation).                                                         *
  * Returns the I2C status (zero if successful).                         *
