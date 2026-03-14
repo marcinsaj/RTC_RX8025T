@@ -297,10 +297,9 @@ uint8_t __attribute__ ((noinline)) RX8025T::bin2wday(uint8_t wday)
 {
   for(int i = 0; i < 7; i++)
   {
-    if((wday >> i) == 1) wday = i + 1;
+    if(wday == _BV(i)) return i + 1;
   }
-  
-  return wday;
+  return 0; // błąd — nieprawidłowe dane z RTC
 }
 
 /*----------------------------------------------------------------------*
